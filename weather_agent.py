@@ -6,6 +6,11 @@ import urllib3
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
+"""
+Agent的本质：一个能动脑又动手的程序
+用一句话概括：agent = llm + 工具 + 规划
+"""
+
 # ===== 1. 配置 =====
 # 替换成你的 DeepSeek API Key
 DEEPSEEK_API_KEY = "sk-cacc8018b55b4db49748dcbd4673ca1d"
@@ -72,7 +77,7 @@ async def ask_agent(user_input: str):
         model="deepseek-chat",
         messages=[{"role": "user", "content": judge_prompt}],
         temperature=0,
-    )
+    )   # llm
     city = judge_response.choices[0].message.content.strip()
 
     # 第二步：如需天气，调用工具
